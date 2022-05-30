@@ -46,12 +46,13 @@ function getImage(values) {
 function slideImage(key) {
 	const carouselSlide = document.querySelector(`.carousel-slide_${key}`)
 	const carouselImages = document.querySelectorAll(`.slide-${key} img`)
-
+	const image = document.querySelectorAll(`.carousel-slide_0`)
 	const prevBtn = document.querySelector(`#prevBtn-${key}`)
 	const nextBtn = document.querySelector(`#nextBtn-${key}`)
 
 	let counter = 0;
-	const size = carouselImages[0].clientWidth;
+	const size = carouselSlide.getBoundingClientRect().width;
+
 
 	nextBtn.addEventListener('click', () => {
 		if (counter >= carouselImages.length - 1) return;
@@ -81,4 +82,3 @@ function fixedNav() {
 	}
 }
 window.addEventListener('scroll', fixedNav);
-
